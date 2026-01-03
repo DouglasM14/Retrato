@@ -11,7 +11,7 @@ import {
   checkAnswer,
   losePoint,
   resetPoints
-} from "./gameLogic.js"
+} from "./utils.js"
 
 import {
   renderQuestion,
@@ -19,10 +19,8 @@ import {
   updatePointsUI,
   reveal,
   showMessage,
-  redirectTabuleiro
+  redirectBoard
 } from "./ui.js"
-
-import { clearQuizState } from "./storage.js"
 
 window.addEventListener("load", init)
 
@@ -101,7 +99,7 @@ function bindRevealAnswer() {
 }
 
 function endRound() {
-  clearQuizState()
+  clear("quizzState")
   advanceQuestion()
-  redirectTabuleiro()
+  redirectBoard()
 }

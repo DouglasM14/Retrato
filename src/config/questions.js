@@ -1,5 +1,5 @@
 import { gameState } from "./state.js"
-import { save, load, saveQuizState, loadQuizState } from "./storage.js"
+import { save, load} from "./storage.js"
 
 export async function loadQuestions() {
   if (gameState.perguntas.length) return
@@ -34,7 +34,7 @@ export function advanceQuestion() {
 }
 
 export function generateTipOrder() {
-  const saved = loadQuizState()
+  const saved = load("quizzState")
 
   if (saved?.tipOrder) {
     gameState.tipOrder = saved.tipOrder
@@ -51,9 +51,11 @@ export function generateTipOrder() {
 }
 
 export function persistQuizState() {
-  saveQuizState({
+  save("quizzState", {
     tipOrder: gameState.tipOrder,
     revealedTips: gameState.revealedTips,
     pontos: gameState.pontos
   })
 }
+
+
