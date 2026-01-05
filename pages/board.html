@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/assets/styles/board.css">
+    <link rel="stylesheet" href="../src/assets/styles/palyersMenus.css">
     <title>Tabuleiro</title>
 </head>
 
@@ -12,7 +13,16 @@
     <div id="board-container">
         <img src="../src/assets/image/board.png" alt="" id="board-image">
     </div>
-    <a href="quiz.html">Quiz</a>
+
+    <div id="playersConfigMenu">
+        <h3>Menu de Confuguração dos Players</h3>
+        <label for="numPlayers">Ecolha quantos jogadores pariciparão:</label>
+        <input id="numPlayers" type="number"  min="2" max="8" value="2">
+
+        <div id="playersInput"></div>
+
+        <a href="quiz.html">Começar o Jogo</a>
+    </div>
 
 
     <button id="btn-toggle-debug" class="debug-btn">🐛</button>
@@ -38,5 +48,6 @@
 
 <script src="../src/config/boardConfig.js"></script>
 <script src="../src/config/debugPainel.js"></script>
-
+<script src="../src/config/gameState.js"></script>
+<script src="../src/config/playerLogic.js"></script>
 </html>
