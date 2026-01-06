@@ -1,11 +1,11 @@
 const gameState = function () {
-    const playersData = []
     const playersOrder = []
     const actualPlayer = 0
+    const readerPlayer = 0
 
     return {
-        playersData,
         playersOrder,
-        actualPlayer
+        actualPlayer,
+        readerPlayer
     }
 }();

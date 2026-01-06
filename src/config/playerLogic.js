@@ -33,14 +33,14 @@
             p.textContent = `Jogador ${i + 1}`
 
             labelName.for = `playerName${i}`
-            labelName.textContent = `Escolha o nome do jogador`
+            labelName.textContent = `Escolha o nome do jogador:`
 
             inputName.id = `playerName${i}`
             inputName.type = "text"
             inputName.placeholder = `Nome do Jogador`
 
             labelColor.for = `playerColor${i}`
-            labelColor.textContent = `Escolha a cor do jogador`
+            labelColor.textContent = `Escolha a cor do jogador:`
 
             inputColor.type = "color"
             inputColor.id = `playerColor${i}`
@@ -72,10 +72,9 @@
         let names = ''
 
         for (let i = 0; i < shuffledArray.length; i++) {
-            names += shuffledArray[i].name
-            if (names == "") {
-                alert("coleque nomes")
-                return
+            if (shuffledArray[i].name == "") {
+                shuffledArray[i].name = `Jogador ${i + 1}`
+                names += `Jogador ${i + 1}`
             }
             if (i < shuffledArray.length - 1) {
                 names += ", "
@@ -88,10 +87,9 @@
     }
 
     function savePlayers() {
-        localStorage.removeItem("players")
         localStorage.removeItem("orderPlayers")
 
-        const playersList = gameState.playersData
+        const playersList = []
         playersList.length = 0
 
         for (let i = 0; i < numPlayers.value; i++) {
@@ -106,21 +104,19 @@
                 type: ""
             }
             playersList.push(player)
-
             nameInput.value = ""
             colorInput.value = "#000000"
         }
 
-        randomizeReader(playersList)
+        let idxReaderPlayer = randomizeReader(playersList)
         gameState.playersOrder = shuffleOrder(playersList)
+        gameState.readerPlayer = idxReaderPlayer
+        gameState.actualPlayer = idxReaderPlayer + 1
 
-        if(playersList[0].type == ""){
-            gameState.actualPlayer = playersList[0]
-        }else{
-            gameState.actualPlayer = playersList[1]
-        }
-
-        localStorage.setItem("players", JSON.stringify(playersList))
         localStorage.setItem("orderPlayers", JSON.stringify(gameState.playersOrder))
+        localStorage.setItem("actualPlayer", JSON.stringify(gameState.actualPlayer))
+        localStorage.setItem("readerPlayer", JSON.stringify(gameState.readerPlayer))
+
+        // Diminuit Pop Up
     }
 })();
