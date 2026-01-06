@@ -1,7 +1,7 @@
 ; (function () {
     window.gameState = window.gameState = window.gameState || []
 
-    // Chamadas das funções
+    // CHAMADAS DE FUNÇÕES
 
     window.addEventListener("load", () => {
         createPlayersInputs(numPlayers.value)
@@ -15,7 +15,7 @@
     const btnSave = document.getElementById("btnSavePlayers")
     btnSave.addEventListener("click", savePlayers)
 
-    // Funções de Construção
+    // FUNÇÕES DE CONSTRUÇÃO
 
     function createPlayersInputs(max) {
         const divPlayers = document.getElementById("playersInput")
@@ -53,7 +53,7 @@
         }
     }
 
-    // funções lógicas
+    // FUNÇÕES LÓGICAS
 
     function randomizeReader(playersList) {
         const chosenIndex = Math.floor(Math.random() * playersList.length)
@@ -111,8 +111,9 @@
             colorInput.value = "#000000"
         }
 
+        randomizeReader(playersList)
         gameState.playersOrder = shuffleOrder(playersList)
-        
+
         if(playersList[0].type == ""){
             gameState.actualPlayer = playersList[0]
         }else{
