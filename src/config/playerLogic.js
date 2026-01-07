@@ -106,13 +106,16 @@
 
         let idxReaderPlayer = randomizeReader(playersList)
         gameState.playersOrder = shuffleOrder(playersList)
-        gameState.readerPlayer = idxReaderPlayer
-        gameState.actualPlayer = idxReaderPlayer + 1
 
+        const len = gameState.playersOrder.length
+
+        gameState.readerPlayer = idxReaderPlayer % len
+        gameState.actualPlayer = (idxReaderPlayer + 1) % len
+    
         localStorage.setItem("orderPlayers", JSON.stringify(gameState.playersOrder))
         localStorage.setItem("actualPlayer", JSON.stringify(gameState.actualPlayer))
         localStorage.setItem("readerPlayer", JSON.stringify(gameState.readerPlayer))
 
-        // Diminuit Pop Up
+        // Diminuir Pop Up
     }
 })();

@@ -1,3 +1,5 @@
+const { act } = require("react");
+
 ; (function () {
     window.gameState = window.gameState = window.gameState || []
 
@@ -30,8 +32,8 @@
         }
     }
 
-    function getQuestions(){
-        
+    function getQuestions() {
+
     }
 
     function setUi() {
