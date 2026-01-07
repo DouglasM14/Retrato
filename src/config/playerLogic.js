@@ -64,7 +64,7 @@
     function shuffleOrder(array) {
         array.forEach((player, index) => {
             if (!player.name || player.name.trim() === "") {
-                player.name = `Jogador ${index + 1}`
+                player.name = `Jogador ${player.id + 1}`
             }
         })
 
