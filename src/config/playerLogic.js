@@ -61,8 +61,8 @@
         return chosenIndex
     }
 
-    function shuffleOrder(array) {
-        array.forEach((player, index) => {
+    function shufflePlayersOrder(array) {
+        array.forEach((player) => {
             if (!player.name || player.name.trim() === "") {
                 player.name = `Jogador ${player.id + 1}`
             }
@@ -105,7 +105,7 @@
         }
 
         let idxReaderPlayer = randomizeReader(playersList)
-        gameState.playersOrder = shuffleOrder(playersList)
+        gameState.playersOrder = shufflePlayersOrder(playersList)
 
         const len = gameState.playersOrder.length
 

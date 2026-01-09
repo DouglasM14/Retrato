@@ -1,11 +1,13 @@
-const gameState = function () {
-    const playersOrder = []
-    const actualPlayer = 0
-    const readerPlayer = 0
+const gameFunctions = function () {
+    window.gameState = {
+        playersOrder: [],
+        actualPlayer: 0,
+        readerPlayer: 0,
 
-    return {
-        playersOrder,
-        actualPlayer,
-        readerPlayer
+        questionsOrder: [],
+        tipsOrder: [],
+        revealedTips: []
     }
+
+    return gameState
 }();

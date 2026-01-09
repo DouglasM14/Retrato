@@ -96,7 +96,7 @@ function convertInJson(csv) {
 function saveNewJson(obj) {
     const content =
         `const jsonData = function (){
-    const questions = ${JSON.stringify(obj, null, 2)
+    window.questions = ${JSON.stringify(obj, null, 2)
         };
     return questions
     }();`

@@ -1,5 +1,5 @@
 const jsonData = function (){
-    const questions = [
+    window.questions = [
   {
     "Categoria": "Personagem",
     "Resposta": "Harry Potter",
