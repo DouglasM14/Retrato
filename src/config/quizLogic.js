@@ -4,13 +4,20 @@
 
     // CHAMADAS DE FUNÇÃO
 
-    window.addEventListener("load", setUi)
+    const btnShowQuiz = document.getElementById("btnShowQuiz")
+    btnShowQuiz.addEventListener("click", setUi)
+
+    const btnHideQuiz = document.getElementById("btnHideQuiz")
+    btnHideQuiz.addEventListener("click", () => {
+        togglePopUp("quizPopUp")
+    })
 
     window.addEventListener("keydown", e => {
         if (e.key === "Enter") {
             checkAnswer()
         }
     })
+
     const btn = document.getElementById("btnResp")
     btn.addEventListener("click", checkAnswer)
 
@@ -107,6 +114,8 @@
 
         // Adcionando as dicas
         addTips()
+
+        togglePopUp("quizPopUp")
     }
 
     function addTips() {
@@ -218,6 +227,7 @@
         localStorage.setItem("orderPlayers", JSON.stringify(order))
         localStorage.removeItem("revealedTips")
 
-        location.href = "../pages/board.html"
+        // location.href = "../pages/board.html"
+        togglePopUp("quizPopUp")
     }
 })();
