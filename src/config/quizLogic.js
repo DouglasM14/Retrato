@@ -193,6 +193,9 @@
         let idxPlayer = playersData.player
         let idxReader = playersData.reader
 
+        order[idxReader].currentTile += (10 - playersData.points)
+        order[idxPlayer].currentTile += playersData.points
+
         idxReader++
 
         if (idxReader >= order.length) {
@@ -208,18 +211,11 @@
         const questionsOrder = questionsData.slice(1)
         gameState.points = 10
 
-        let playerTile = localStorage.getItem("movementPlayer")
-        playerTile = playersData.points
-        
-        let readerTile = localStorage.getItem("movementReader")
-        readerTile = (10 - playersData.points)
-
-        localStorage.setItem("readerPlayer", idxReader)
         localStorage.setItem("actualPlayer", idxPlayer)
+        localStorage.setItem("readerPlayer", idxReader)
         localStorage.setItem("questionsOrder", JSON.stringify(questionsOrder))
         localStorage.setItem("points", gameState.points)
-        localStorage.setItem("movementPlayer", playerTile)
-        localStorage.setItem("movementReader", readerTile)
+        localStorage.setItem("orderPlayers", JSON.stringify(order))
         localStorage.removeItem("revealedTips")
 
         location.href = "../pages/board.html"

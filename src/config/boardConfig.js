@@ -2,15 +2,6 @@ const tileCoordinates = [{ "top": "88.99", "left": "10.05" }, { "top": "90.57", 
 
 const idxPlayer = parseInt(localStorage.getItem("actualPlayer"))
 const idxReader = parseInt(localStorage.getItem("readerPlayer"))
-const movementPlayer = parseInt(localStorage.getItem("movementPlayer")) || 0
-const movementReader = parseInt(localStorage.getItem("movementReader")) || 0
-
-if (!movementPlayer) {
-    localStorage.setItem("movementPlayer", 0)
-}
-if (!movementReader) {
-    localStorage.setItem("movementReader", 0)
-}
 
 let players = JSON.parse(localStorage.getItem("orderPlayers")) || []
 
@@ -67,11 +58,8 @@ function updateVisualPositions() {
 
 function movePlayer(playerId, steps) {
     const player = players.find(p => p.id === playerId);
-
     if (player) {
         player.currentTile += steps;
-
-        //TODO: salvar no localStorage a posiçao dos players
 
         if (player.currentTile >= tileCoordinates.length - 1) {
             player.currentTile = tileCoordinates.length - 1;
@@ -89,8 +77,13 @@ function movePlayer(playerId, steps) {
 
 createPawns();
 
-movePlayer(idxPlayer, movementPlayer);
-movePlayer(idxReader, movementReader);
+// chama um erro no ínico da chamada por não encontrar um currentTile
+// arruma quando vira popUp
+const playerTile = parseInt(players[idxPlayer].currentTile)
+const readerTile = parseInt(players[idxReader].currentTile)
+
+movePlayer(idxPlayer, playerTile);
+movePlayer(idxReader, readerTile);
 
 // CODIGO QUE CRIA AS COORDENADAS CLICANDO NO TABULEIRO
 /*

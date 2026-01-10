@@ -73,12 +73,6 @@
 
     // FUNÇÕES LÓGICAS
 
-    function randomizeReader(playersList) {
-        const chosenIndex = Math.floor(Math.random() * playersList.length)
-        playersList[chosenIndex].type = "reader"
-        return chosenIndex
-    }
-
     function shufflePlayersOrder(array) {
         array.forEach((player) => {
             if (!player.name || player.name.trim() === "") {
@@ -114,21 +108,17 @@
                 id: i,
                 name: nameInput.value.trim(),
                 color: colorInput.value,
-                currentTile: 0,
-                type: ""
+                currentTile: 0
             }
             playersList.push(player)
             nameInput.value = ""
             colorInput.value = "#000000"
         }
 
-        let idxReaderPlayer = randomizeReader(playersList)
         gameState.playersOrder = shufflePlayersOrder(playersList)
 
-        const len = gameState.playersOrder.length
-
-        gameState.readerPlayer = idxReaderPlayer % len
-        gameState.actualPlayer = (idxReaderPlayer + 1) % len
+        gameState.readerPlayer = 0
+        gameState.actualPlayer = 1
 
         localStorage.setItem("orderPlayers", JSON.stringify(gameState.playersOrder))
         localStorage.setItem("actualPlayer", JSON.stringify(gameState.actualPlayer))
